@@ -1,0 +1,49 @@
+Chapter		Function		Page	Builtin?
+-------		--------		----	--------
+
+preface		atom?			xii		no
+
+1			car				5		yes
+1			cdr				6		yes
+1			cons			7		yes
+1			null?			9		yes
+1			quote			9		yes
+1			eq?				11		yes
+
+2			lat?			15		no
+2			define			16		yes
+2			lambda			16		yes
+2			cond			16		yes
+2			else			16		yes
+2			member?			22		no
+
+3			rember			33		no
+3			firsts			43		no
+3			seconds			45		no
+3			insertR			47		no
+3			insertL			51		no
+3			subst			51		no
+3			subst2			52		no
+3			multirember		53		no
+3			multiinsertR	56		no
+3			multiinsertL	57		no
+3			multisubst		57		no
+
+4			add1
+4			sub1
+4			o+
+4			o-
+
+5			leftmost		88		no
+
+6			numbered?		98		no
+
+7			set?			111		no
+
+8
+
+9
+
+10							175		no
+
+# vim: set ts=4 :

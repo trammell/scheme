@@ -1,0 +1,45 @@
+
+Materials in this directory pertain to "The Little Schemer", 4th Edition,
+by Daniel P. Friedman and Matthias Felleisen (drawings by Duane Bibby,
+foreword by Gerald J. Sussman).  This book was published in December 1995
+(ISBN# 978-0-262-56099-3).
+
+Chapters in the book are:
+
+    1. Toys
+    2. 
+    3. Cons the Magnificent
+    4. 
+    5.
+    6.
+    7.
+    8. Lambda the Ultimate
+    9.
+   10. What Is the Value of All of This?
+
+A URI for the book (as of 20 Oct. 2007) is
+"http://www.ccs.neu.edu/home/matthias/BTLS/".  There is only one entry in
+the errata at this point:
+
+>>> Lars Gregori points out that contrary to page 156 in the book, Wilhelm
+>>> Ackermann lived from 1896 to 1962. His sources are:
+>>>    http://www-groups.dcs.st-andrews.ac.uk/history/Mathematicians/Ackermann.html
+>>>    http://en.wikipedia.org/wiki/Wilhelm_Ackermann
+
+Files and directories are:
+
+   README      this file
+   Makefile    test targets and other build commands
+   ex/         answers to The Little Lisper, plus unit tests
+   lib/        Scheme functions
+   misc/       other related files
+   t/          unit tests for functions defined in the book and in-book
+               exercises; read TESTING below
+
+TESTING
+
+Tests use the TAP protocol and the "runtests" script provided by Perl
+module "TAP::Harness".
+
+
+# vim: set ai et ts=3 tw=75 :
