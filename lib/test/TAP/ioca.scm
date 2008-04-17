@@ -4,7 +4,11 @@
 ;     http://testanything.org/
 
 (define-module (test TAP ioca)
-   #:export (plan ok is isnt diag))
+   #:export (plan no-plan ok is isnt diag))
+
+(define has-plan #f)
+(define index 0)
+(define max #f)
 
 (define (diag-single msg)
   (display "# ")
@@ -14,67 +18,44 @@
 (define (diag msgs)
    (map diag-single (string-split msgs #\newline)))
 
-(define (make-tapioca)
-  
-  (let ((index 0)
-        (max #f))
-    
-    (define (display-ok)
-      (begin (set! index (+ index 1))
-             (display "ok ")
-             (display index)
-             (newline)))
+(define (display-ok)
+  (begin (set! index (+ index 1))
+         (simple-format #t "ok ~a~%" index)
+         (flush-all-ports)))
 
-    (define (display-not-ok)
-      (begin (set! index (+ index 1))
-             (display "not ok ")
-             (display index)
-             (newline)))
+(define (display-not-ok)
+  (begin (display "not ")
+         (display-ok)))
 
-    (define (plan n)
-      (cond (max (error "Multiple calls to (plan)"))
-            (else (begin (set! max n)
-                         (display '1..)
-                         (display max)
-                         (newline)
-                         max))))
+(define (plan n)
+  (cond (max (error "Multiple calls to (plan)"))
+        (else (begin (set! max n)
+                     (set! has-plan #t)
+                     (simple-format #t "1..~a~%" max)
+                     max))))
 
-    ; FIXME: need to implement this.  Not sure how to implement something
-    ; equivalent to Perl's END { ... } block in Scheme.
-    (define (no-plan) #f)
+; FIXME: need to implement this.  Not sure how to implement something
+; equivalent to Perl's END { ... } block in Scheme.
 
-    (define (ok bool)
-      (cond (bool (display-ok))
-            (else (display-not-ok))))
+(define (no-plan)
+  (set! has-plan #f))
 
-    (define (is s1 s2)
-      (cond ((equal? s1 s2) (display-ok))
-            (else (display-not-ok))))
+(define (cleanup)
+  (cond (has-plan (diag "has plan"))
+        (else (begin
+                (simple-format #t "has-plan: ~a~%" has-plan)
+                (simple-format #t "1..~a~%" index)
+                (flush-all-ports)))))
+                  
+(define (ok bool)
+  (cond (bool (display-ok))
+        (else (display-not-ok))))
 
-    (define (isnt s1 s2)
-      (cond ((equal? s1 s2) (display-not-ok))
-            (else (display-ok))))
+(define (is s1 s2)
+  (cond ((equal? s1 s2) (display-ok))
+        (else (display-not-ok))))
 
-   (define (dispatch msg)
-     (cond ((eq? msg 'plan) plan)
-           ((eq? msg 'no-plan) no-plan)
-           ((eq? msg 'ok) ok)
-           ((eq? msg 'is) is)
-           ((eq? msg 'isnt) isnt)
-           (else (error "Unknown TAP-ioca request" msg))))
-
-   dispatch))
-
-(define tapioca      (make-tapioca))
-(define (no-plan)    ((tapioca 'no-plan) n))
-(define (plan n)     ((tapioca 'plan) n))
-(define (ok bool)    ((tapioca 'ok) bool))
-(define (is s1 s2)   ((tapioca 'is) s1 s2))
-(define (isnt s1 s2) ((tapioca 'isnt) s1 s2))
-
-(add-hook! exit-hook (lambda () (exit 99)))
-
-(display )
-
-;; (add-hook! exit-hook (lambda () ... )
+(define (isnt s1 s2)
+  (cond ((equal? s1 s2) (display-not-ok))
+        (else (display-ok))))
 
