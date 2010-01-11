@@ -11,6 +11,7 @@ install:
 test:
 	guile -L $(LIB) t/ch11/member.t
 	guile -L $(LIB) t/ch11/two-in-a-row.t
+	guile -L $(LIB) t/ch11/sum-of-prefixes.t
 
 
 #GUILE_LOAD_PATH=$(LIB) prove t/ch11/*.t
