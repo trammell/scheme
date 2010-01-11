@@ -7,3 +7,25 @@ ISBN-13: 978-0262561006
 
 http://www.ccs.neu.edu/home/matthias/BTSS/
 
+
+(from http://www.ccs.neu.edu/home/matthias/BTSS/errata.html)
+The Seasoned Schemer -- Technical Errata
+========================================
+
+Chapter 13
+  Page  49: A4: Swap answers of the last two clauses of J's cond
+  Page  50: Q2: Swap answers of the last two clauses of J's cond
+Chapter 14
+  Page  68: Q3: "eq" ==> "eq?"
+  Page  89: Q1-A1: They have the same status as "now make a peanut butter
+            and jelly sandwich." But, there is something to be learned here
+       once you have studied letcc in depth.
+Chapter 18
+  Page 150: Q3: (same? bakers-dozen bakers-dozen-too) ==>
+         (same? dozen bakers-dozen-too)
+  Page 153: Q1: Move the same? question and answer below the two null?
+            questions and answers in the definition of C.
+Chapter 20
+  Page 192: Q2: "rember" ==> remember"
+  Page 194: Q4: in box: Ln 8: delete (:number? (a-prim number?)) 
+
