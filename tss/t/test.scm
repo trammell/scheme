@@ -1,7 +1,12 @@
-(define (assert msg b)
-  (if (not b) (error msg)))
+(define assert
+  (lambda (msg test)
+    (if (not test) (error msg))))
 
-(define (asserteq msg a b)
-  (assert msg (> 0.0001 (abs (- a b)))))
+;(define (assert-eq msg a b)
+;  (assert msg (> 0.0001 (abs (- a b)))))
+
+(define assert-equal
+  (lambda (msg a b)
+    (assert msg (equal? a b))))
 
 ;(error %load-path)
