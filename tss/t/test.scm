@@ -9,4 +9,8 @@
   (lambda (msg a b)
     (assert msg (equal? a b))))
 
-;(error %load-path)
+(set! %load-path (cons "../lib" %load-path))
+(set! %load-path (cons "./lib"  %load-path))
+
+; (display %load-path)(newline)
+

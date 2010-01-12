@@ -1,5 +1,6 @@
-#!/usr/bin/env guile -s
-vim: set filetype=scheme : !#
+#!/usr/bin/env guile
+; vim: set filetype=scheme :
+!#
 
 ; load the test harness
 (load "../test.scm")
