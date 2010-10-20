@@ -1,0 +1,908 @@
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<style>
+BODY, P, DIV, H1, H2, H3, H4, H5, H6, ADDRESS, OL, UL, TITLE, TD, OPTION, SELECT {
+ font-family: Times New Roman;
+ 
+}
+
+BODY, P, DIV, ADDRESS, OL, UL, LI, TITLE, TD, OPTION, SELECT {  
+  font-size: 12.0pt;
+  margin-top:0pt;  
+  margin-bottom:0pt;  
+} 
+
+BODY, P {
+  margin-left:0pt; 
+  margin-right:0pt;
+}
+
+BODY {
+  line-height: normal;
+
+  margin: 6px;
+  padding: 0px;
+}
+
+h6 { font-size: 10pt }
+h5 { font-size: 11pt }
+h4 { font-size: 12pt }
+h3 { font-size: 13pt }
+h2 { font-size: 14pt }
+h1 { font-size: 16pt }
+
+blockquote {padding: 10px; border: 1px #DDDDDD dashed }
+
+a img {border: 0}
+
+#doc-contents {
+  background-color: #ffffff;
+}
+
+
+</style>
+
+
+
+
+</head>
+
+
+<body revision="d8r8v3p_34fbnvpk:43">
+
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman">
+  <font size=5><u><b>The Little LISPer 3e, Chapter 1 Exercises</b></u></font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman">
+  <br>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman">
+  <font size=4><b>1.1 Think of ten different atoms and write them down.</b><br>
+  </font>
+</p>
+<blockquote>
+  <p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Trebuchet MS">
+    <font size=4>a b c d e 1 2 3 4 5</font>
+  </p>
+</blockquote>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman">
+  <font size=4><b>1.2 Using the atoms of Exercise 1.1, make up twenty different
+  lists.</b></font>
+</p>
+<blockquote>
+  <p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Trebuchet MS">
+    <font size=4>() (1) (2) (3) (4)</font>
+  </p>
+  <p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Trebuchet MS">
+    <font size=4> (1 2) (1 3) (1 2 3) (1 3 5) (1 2 4)</font>
+  </p>
+  <p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Trebuchet MS">
+    <font size=4> (a) (b) (c) (c a) (c b)</font>
+  </p>
+  <p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Trebuchet MS">
+    <font size=4> (1 a) (2 b) (1 a 2 b) (1 a c) (1 2 3 4 5 a b c d e)</font>
+  </p>
+</blockquote>
+<p style=MARGIN-BOTTOM:0pt>
+  <font size=4><b>1.3 The list
+  </b><font face="MS Reference Sans Serif, sans-serif"><span style="FONT-FAMILY:Trebuchet MS">(all
+  these problems)</span></font> <b>can be constructed by (cons <i>a</i> (cons
+  <i>b</i> (cons <i>c d</i>))), where</b></font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; MARGIN-LEFT:160px">
+  <font size=4><b><i> a</i> is
+  </b><font face="MS Reference Sans Serif, sans-serif" style="FONT-FAMILY:Trebuchet MS">all</font><b>,</b></font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; MARGIN-LEFT:160px">
+  <font size=4><b><i> b</i> is
+  </b><font face="MS Reference Sans Serif, sans-serif" style="FONT-FAMILY:Trebuchet MS">these</font><b>,</b></font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; MARGIN-LEFT:160px">
+  <font size=4><b><i> c</i> is
+  </b><font face="MS Reference Sans Serif, sans-serif" style="FONT-FAMILY:Trebuchet MS">problems</font><b>,
+  and</b></font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; MARGIN-LEFT:160px">
+  <font size=4><b><i> d</i> is
+  </b><font face="MS Reference Sans Serif, sans-serif" style="FONT-FAMILY:Trebuchet MS">()</font><b>.</b></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font size=4><b>Write down how you would construct the following
+  lists:</b></font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; MARGIN-LEFT:160px; FONT-FAMILY:Trebuchet MS">
+  <font size=4> (all (these problems))</font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; MARGIN-LEFT:160px; FONT-FAMILY:Trebuchet MS">
+  <font size=4> (all (these) problems)</font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; MARGIN-LEFT:160px; FONT-FAMILY:Trebuchet MS">
+  <font size=4> ((all these) problems)</font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; MARGIN-LEFT:160px">
+  <font size=4 style="FONT-FAMILY:Trebuchet MS"> ((all these
+  problems))</font><br>
+</p>
+<blockquote>
+  <p>
+    <font size=4>First define
+    a-d:</font><font face="Arial, sans-serif" size=4><br>
+    </font>
+  </p>
+  <p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Trebuchet MS">
+    <font size=4>(define a 'all)</font>
+  </p>
+  <p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Trebuchet MS">
+    <font size=4>(define b 'these)</font>
+  </p>
+  <p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Trebuchet MS">
+    <font size=4>(define c 'problems)</font>
+  </p>
+  <p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Trebuchet MS">
+    <font size=4>(define d '())</font>
+  </p>
+  <p style=MARGIN-BOTTOM:0pt>
+    <font size=4><br>
+    </font>
+  </p>
+  <p style=MARGIN-BOTTOM:0pt>
+    <font face="Arial, sans-serif" size=4><span style="FONT-FAMILY:Times New Roman">Expression
+    to construct </span><span style="FONT-FAMILY:Trebuchet MS">(all (these
+    problems))</span>:</font>
+  </p>
+  <p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Trebuchet MS">
+    <font size=4>(cons a (cons (cons b (cons c d)) d))</font>
+  </p>
+  <p style=MARGIN-BOTTOM:0pt>
+    <font size=4><br>
+    </font>
+  </p>
+  <p style=MARGIN-BOTTOM:0pt>
+    <font face="Arial, sans-serif" size=4><span style="FONT-FAMILY:Times New Roman">Expression
+    to construct</span><span style="FONT-FAMILY:Trebuchet MS"> (all (these)
+    problems):</span></font>
+  </p>
+  <font face="Arial, sans-serif" size=4><span style="FONT-FAMILY:Trebuchet MS">(cons
+  a (cons (cons b d) (cons c d)))</span> </font>
+  <p style=MARGIN-BOTTOM:0pt>
+  </p>
+  <p style=MARGIN-BOTTOM:0pt>
+    <font size=4><br>
+    </font>
+  </p>
+  <p style=MARGIN-BOTTOM:0pt>
+    <font face="Arial, sans-serif" size=4><span style="FONT-FAMILY:Times New Roman">Expression
+    to construct</span><span style="FONT-FAMILY:Trebuchet MS"> ((all these)
+    problems):</span></font>
+  </p>
+  <p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Trebuchet MS">
+    <font size=4>(cons (cons a (cons b d)) (cons c d))</font>
+  </p>
+  <p style=MARGIN-BOTTOM:0pt>
+    <font size=4><br>
+    </font>
+  </p>
+  <p style=MARGIN-BOTTOM:0pt>
+    <font face="Arial, sans-serif" size=4><span style="FONT-FAMILY:Times New Roman">Expression
+    to construct</span><span style="FONT-FAMILY:Trebuchet MS"> ((all these
+    problems)):</span></font>
+  </p>
+  <p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Trebuchet MS">
+    <font size=4>(cons (cons a (cons b (cons c d))) d)</font>
+  </p>
+</blockquote>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman">
+  <font size=4><b>1.4 What is (car (cons </b><b><i>a l</i></b><b>)), where
+  </b><b><i>a</i></b><b> is
+  </b><span style="FONT-FAMILY:Trebuchet MS"><b>french</b></span><b>, and
+  </b><b><i>l</i></b><b> is
+  </b><span style="FONT-FAMILY:Trebuchet MS"><b>(fries)</b></span><b>; and
+  w</b></font><font size=4><b>hat is (cdr (cons </b><b><i>a l</i></b><b>)) where
+  </b><b><i>a</i></b><b> is
+  </b><span style="FONT-FAMILY:Trebuchet MS"><b>oranges</b></span><b>, and
+  </b><b><i>l</i></b><b> is
+  </b><span style="FONT-FAMILY:Trebuchet MS"><b>(apples and
+  peaches)</b></span><b>?</b></font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman">
+  <font size=4><br>
+  </font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman; MARGIN-LEFT:40px">
+  <font size=4>Using the definitions on p. ???, (car (cons a b)) = a, and (cdr
+  (cons a b)) = b, so<br>
+  </font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman; MARGIN-LEFT:40px">
+  <font size=4><br>
+  </font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman; MARGIN-LEFT:40px">
+  <font size=4>(car (cons 'french '(fries)) should be french</font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman; MARGIN-LEFT:40px">
+  <font size=4>(cdr (cons&nbsp; 'oranges '(apples and peaches))) should be
+  (apples and peaches)</font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman; MARGIN-LEFT:40px">
+  <br>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman; MARGIN-LEFT:40px">
+  <font size=4><br>
+  </font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman">
+  <font size=4><br>
+  </font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman">
+  <font size=4>(define a 'french)</font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman">
+  <font size=4>(define l '(fries))</font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman">
+  <font size=4>(cons a l)</font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman">
+  <font size=4>;;; (french fries)</font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman">
+  <font size=4>(car (cons a l))</font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman">
+  <font size=4>;;; french</font>
+</p>
+<font size=4><br>
+</font>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman">
+  <font size=4>(define a 'oranges)</font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman">
+  <font size=4>(define l '(apples and peaches))</font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman">
+  <font size=4>(cons a l)</font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman">
+  <font size=4>;;; (oranges apples and peaches)</font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman">
+  <font size=4>(cdr (cons a l))</font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman">
+  <font size=4>;;; (apples and peaches)</font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman">
+  <font size=4>1.5 Find an atom "x" that makes "(eq? x y)" true, where "y" is
+  "lisp". Are there any others?</font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(define y (quote
+  lisp))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(eq? 'cat y)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>; #f</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(eq? 'dog y)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>; #f</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(eq? 'lisp y)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>; #t</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(eq? '() y)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>; #f</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(eq? #f y)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>; #f</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(eq? #t y)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>; #f</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(eq? 0 y)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>; #f</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(eq? 1 y)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>; #f</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman">
+  <font size=4>1.6 If "a" is "atom", is there a list "l" that makes "(null?
+  (cons a l))" true?</font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>; No. "null?" is only true for an
+  empty list; there's no way to make an</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>; empty list with
+  "cons".</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>1.7 Determine the value
+  of</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(cons s l) ; where s is x and l is
+  y</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(cons s l) ; where s is () and l
+  is ()</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(car s) ; where s is
+  ()</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(cdr l) ; where l is
+  (())</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(define s 'x)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(define l 'y)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(cons s l)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; (x . y)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(define s '())</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(define l '())</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(cons s l)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; (())</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(define s '())</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(car s)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; Backtrace:</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; In current
+  input:</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; 41: 0* [car
+  {()}]</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; </font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; &lt;unnamed port&gt;:41:1: In
+  procedure car in expression (car s):</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; &lt;unnamed port&gt;:41:1:
+  Wrong type (expecting pair): ()</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; ABORT:
+  (wrong-type-arg)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(define l '(()))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(cdr l)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; ()</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; REMEMBER:</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; (car (cons a b)) ==
+  a</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; (cdr (cons a b)) ==
+  b</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman">
+  <font size=4>1.8 True or false,</font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman; MARGIN-LEFT:40px">
+  <font size=4> (atom? (car l)) where l is ((meatballs) and spaghetti)</font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman; MARGIN-LEFT:40px">
+  <font size=4> (null? (cdr l)) where l is ((meatballs))</font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman; MARGIN-LEFT:40px">
+  <font size=4> (eq? (car l) (car (cdr l))) where l is (two meatballs)</font>
+</p>
+<p style="MARGIN-BOTTOM:0pt; FONT-FAMILY:Times New Roman; MARGIN-LEFT:40px">
+  <font size=4> (atom? (cons a l)) where l is (ball) and a is 'meat</font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;; Little Schemer, p.
+  xii</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(define atom?</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(lambda (x)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(and (not (pair? x)) (not (null?
+  x)))))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(define l '((meatballs) and
+  spaghetti))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(car l)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>; (meatballs)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(atom? car l)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>; #f</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(define l
+  '((meatballs)))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(cdr l)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; ()</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(null? (cdr l))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; #t</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(define l '(two
+  meatballs))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(car l)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; two</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(cdr l)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; (meatballs)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(car (cdr l))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; meatballs</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(eq? (car l) (car (cdr
+  l)))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; #f</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(define a 'meat)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(define l '(ball))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(cons a l)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; (meat ball)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(atom? (cons a l))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; #f</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>1.9&nbsp; What is:</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>; (car (cdr (cdr (car
+  l))))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>; where l is '((kiwis mangoes
+  lemons) and (more))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>; (car (cdr (car (cdr
+  l))))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>; where l is '(() (eggs and
+  (bacon)) (for) (breakfast))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>; (car (cdr (cdr (cdr
+  l))))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>; where l is '(() () () (and
+  (coffee)) please)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(define l '((kiwis mangoes lemons)
+  and (more)))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(car l)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; (kiwis mangoes
+  lemons)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(cdr (car l))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; (mangoes lemons)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(cdr (cdr (car l)))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; (lemons)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(car (cdr (cdr (car
+  l))))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; lemons</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(define l '(() (eggs and (bacon))
+  (for) (breakfast)))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(cdr l)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; ((eggs and (bacon)) (for)
+  (breakfast))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(car (cdr l))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; (eggs and
+  (bacon))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(cdr (car (cdr l)))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; (and (bacon))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(car (cdr (car (cdr
+  l))))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; and</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(define l '(() () () (and
+  (coffee)) please))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(cdr l)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; (() () (and (coffee))
+  please)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(cdr (cdr l))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; (() (and (coffee))
+  please)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(cdr (cdr (cdr l)))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; ((and (coffee))
+  please)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(car (cdr (cdr (cdr
+  l))))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; (and (coffee))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>1.10 To get the atom and in
+  '(peanut butter and jelly on toast) we can write "(car (cdr (cdr l)))". What
+  would you write to get:</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2> Harry in l, where l is (apples in
+  (Harry has a backyard))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2> where l is (apples and
+  Harry)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2> where l is (((apples) and
+  ((Harry))) in his backyard)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(define l '(apples in (Harry has a
+  backyard)))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(cdr l)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; (in (Harry has a
+  backyard))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(cdr (cdr l))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; ((Harry has a
+  backyard))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(car (cdr (cdr l)))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; (Harry has a
+  backyard)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(car (car (cdr (cdr
+  l))))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; Harry</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(define l '(apples and
+  Harry))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(cdr l)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; (and Harry)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(cdr (cdr l))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; (Harry)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(car (cdr (cdr l)))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; Harry</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <br>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(define l '(((apples) and
+  ((Harry))) in his backyard))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(car l)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; ((apples) and
+  ((Harry)))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(cdr (car l))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; (and ((Harry)))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(cdr (cdr (car l)))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; (((Harry)))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(car (cdr (cdr (car
+  l))))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; ((Harry))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(car (car (cdr (cdr (car
+  l)))))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; (Harry)</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>(car (car (car (cdr (cdr (car
+  l))))))</font></font>
+</p>
+<p style=MARGIN-BOTTOM:0pt>
+  <font face="Arial, sans-serif"><font size=2>;;; Harry</font></font>
+</p></body>
+</html>
